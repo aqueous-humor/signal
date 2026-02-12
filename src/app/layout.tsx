@@ -1,24 +1,21 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: "Signal",
-  // Standard meta tag for browsers
-  other: {
-    google: "notranslate",
-    // This tells Google Search not to offer a translation in snippets
-    googlebot: "notranslate",
-  },
+  description: "Internal idea & feedback workspace for modern teams.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" translate="no">
-      <body className={`antialiased`}>{children}</body>
+    <html lang="en">
+      <body className="min-h-screen bg-neutral-950 text-neutral-100">
+        <div className="flex min-h-screen flex-col">{children}</div>
+      </body>
     </html>
   );
 }
