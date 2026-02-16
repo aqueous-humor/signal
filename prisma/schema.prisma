@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -33,7 +33,7 @@ model User {
   emailVerified DateTime?
   role          Role     @default(MEMBER)
 
-  workspaceId   String
+  workspaceId   String @db.ObjectId
   workspace     Workspace @relation(fields: [workspaceId], references: [id])
 
   ideas         Idea[]
@@ -49,10 +49,10 @@ model Idea {
   content     String
   status      IdeaStatus @default(OPEN)
 
-  workspaceId String
+  workspaceId String @db.ObjectId
   workspace   Workspace @relation(fields: [workspaceId], references: [id])
 
-  authorId    String
+  authorId    String @db.ObjectId
   author      User @relation(fields: [authorId], references: [id])
 
   comments    Comment[]
@@ -65,13 +65,13 @@ model Comment {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   content     String
 
-  ideaId      String
+  ideaId      String @db.ObjectId
   idea        Idea @relation(fields: [ideaId], references: [id])
 
-  authorId    String
+  authorId    String @db.ObjectId
   author      User @relation(fields: [authorId], references: [id])
 
-  workspaceId String
+  workspaceId String @db.ObjectId
   workspace   Workspace @relation(fields: [workspaceId], references: [id])
 
   createdAt   DateTime @default(now())
@@ -80,14 +80,14 @@ model Comment {
 
 model VerificationToken {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId    String
+  userId    String @db.ObjectId
   token     String   @unique
   expiresAt DateTime
 }
 
 model PasswordResetToken {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId    String
+  userId    String @db.ObjectId
   token     String   @unique
   expiresAt DateTime
 }

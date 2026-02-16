@@ -12,7 +12,8 @@
     "start": "next start",
     "lint": "eslint",
     "prepare": "husky",
-    "test": "echo \"No tests yet\""
+    "test": "echo \"No tests yet\"",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "6.19",
