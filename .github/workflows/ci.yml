@@ -8,6 +8,8 @@ on:
 jobs: 
     build: 
         runs-on: ubuntu-latest
+        env: 
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
         steps: 
             - name: Checkout repo
@@ -30,3 +32,4 @@ jobs:
 
             - name: Production build
               run: npm run build
+            
