@@ -93,8 +93,9 @@ model PasswordResetToken {
 }
 
 enum Role {
-  MEMBER
+  OWNER
   ADMIN
+  MEMBER
 }
 
 enum IdeaStatus {
