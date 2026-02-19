@@ -18,8 +18,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        console.log("DB AUTH CHECK:", credentials?.email);
-
         if (!credentials?.email || !credentials?.password) return null;
 
         const user = await prisma.user.findUnique({

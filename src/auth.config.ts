@@ -1,6 +1,10 @@
 import type { NextAuthConfig } from "next-auth";
 
 export default {
+  pages: {
+    signIn: "/login", // Redirects unauthenticated users here
+    newUser: "/register", // Can be used for post-OAuth onboarding
+  },
   providers: [], //The real provider will be injected in auth.ts
   session: { strategy: "jwt" },
   callbacks: {

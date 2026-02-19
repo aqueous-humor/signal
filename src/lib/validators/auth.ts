@@ -7,3 +7,8 @@ export const RegisterSchema = z.object({
 
   name: z.string().min(2, "Name is too short").or(z.literal("")).optional(),
 });
+
+export const LoginSchema = z.object({
+  email: z.email("Please enter a valid email address").trim().toLowerCase(),
+  password: z.string().min(1, "Password is required"),
+});
